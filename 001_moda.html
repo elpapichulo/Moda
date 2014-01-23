@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="{block:English}en{/block:English}{block:French}fr{/block:French}{block:German}de{/block:German}{block:Japanese}ja{/block:Japanese}{block:Italian}it{/block:Italian}{block:Spanish}es{/block:Spanish}{block:Polish}pl{/block:Polish}">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="viewport" content="width=device-width">
+		<title>{Title}{block:PostSummary} &mdash; {PostSummary}{/block:PostSummary}</title>
+		{block:Description}<meta name="description" content="{MetaDescription}">{/block:Description}
+
+		<link rel="apple-touch-icon" href="{PortraitURL-128}">
+		<link rel="shortcut icon" href="{Favicon}">
+		<link rel="alternate" type="application/rss+xml" href="{RSS}">
+		<!--Normalize 2.1.0 CSS-->
+		<link rel="stylesheet" href="http://static.tumblr.com/askg8j2/l0Hmzdykd/normalize2-1-3.css" type="text/css" media="all">
+		<style type="text/css">
+
+			img, video, object, embed {
+				max-width: 100%;
+				height: auto !important;
+				vertical-align: top;
+			}
+
+			.clearfix {zoom:1;}
+			.clearfix:before, .clearfix:after {
+				content: "\0020";
+				display: block;
+				height: 0;
+			overflow: hidden; }
+			.clearfix:after {clear: both;}
+
+			/*Tumblr inherited */
+			/* tumblr controls (follow/dash) implemented as iframe */
+			iframe#tumblr_controls {}
+			.search_query {}
+			.read_more_container a {}
+
+			/* Custom CSS */
+			body {
+				-webkit-font-smoothing: antialiased;
+				font-family: Arial;
+				font-size: 11px;
+				font-weight: 400;
+				letter-spacing: .09em;
+				word-spacing: 0.18em;
+				line-height: 1.6;
+			}
+
+			.cell {
+				width: 300px;
+				max-height: 600px;
+				margin: 1px 0 0 1px;
+				overflow:hidden;
+				tabindex: -1;
+				-webkit-border-radius:2px;
+				border-radius:2px;
+			}
+
+			.cell:focus {
+				background-color: blue;
+			}
+
+			.cell:hover {
+				opacity: 0.2;
+			}
+
+			.cell-wrapper {
+				background-color: #fff;
+			}
+
+			.cell-static {
+				width:300px;
+				max-height: 600px;
+				margin: 1px 0 0 1px;
+				overflow: hidden;
+			}
+
+			.cell-container {
+
+			}
+
+			/* content is a section containing rendered posts */
+			.content {
+				margin-top: 100px;
+				margin-left: 170px;
+			}
+
+			.date {
+
+			}
+
+			.fixed {
+				position: fixed;
+				top: 0;
+				z-index: 99999;
+			}
+
+			.header {
+				color: #151515;	
+			}
+
+			.header h1 {
+				font-size: 6em;
+				line-height: .8;
+				margin: 0;
+			}
+
+			iframe {
+				display: block;
+			}
+
+			.cell:hover, #navi {
+				-webkit-transition-duration:0.5s;
+				-moz-transition-duration:0.5s;
+				transition-duration:0.5s;
+			}
+
+			#navi{
+				margin: 0 0 0 1px;
+				width: 300px;
+				height: 4px;
+				background-color:rgb(86,197,153);
+			}
+
+			.sidebar {
+				height: 100px;
+				width: 170px;
+				position: fixed;
+				top: 350px;
+				padding: 30px 0 30px 0;
+			}
+
+			.text, .quote {
+				background-color: #151515;
+				padding: 30px;
+				color: #e6e6e6;
+			}
+
+		</style>
+		<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	</head>
+	<body>
+
+
+		<!-- where the blog body begins -->
+			<div class="sidebar">
+			<ul>
+				<li> home </li>
+				<li> archive </li>
+				<li> home </li>
+				<li> home </li>
+				<li> home </li>
+			</ul>
+		</div>
+		<section class="content">
+			<!-- <div class="header"> -->
+				<!-- 	<h1>{Title}</h1> -->
+				<!-- </div> -->
+			<div class="header cell-static">
+				<h1>{Title}</h1>
+			</div>
+			<div id="navi"></div>
+			<div class="cell-container">
+				{block:SearchPage}
+				<div class="result">
+					<p>{lang:Found SearchResultCount results for SearchQuery 2}</p>
+					{block:NoSearchResults}<p>{lang:No results for SearchQuery 2}</p>{/block:NoSearchResults}
+				</div>
+				{/block:SearchPage}
+				{block:TagPage}<div class="result"><p>{lang:TagResultCount posts tagged Tag 3}</p></div>{/block:TagPage}
+
+				{block:Posts}
+				<div class="cell-wrapper">
+					<article class="cell {TagsAsClasses}">
+						{block:Text}
+						<div class="text">
+							{block:Title}<h1>{Title}</h1>{/block:Title}
+							{Body}
+						</div>
+						{/block:Text}
+						{block:Quote}
+						<div class="quote">
+							<blockquote class="words {Length}">&#8220;{Quote}&#8221;</blockquote>
+							{block:Source}<p class="source">&mdash; {Source}</p>{/block:Source}
+						</div>
+						{/block:Quote}
+						{block:Link}
+						<div class="link">
+							<h3><a href="{URL}" {Target}>{Name}</a></h3>
+							{block:Description}<div class="caption">{Description}</div>{/block:Description}
+						</div>
+						{/block:Link}
+						{block:Video}
+						<div class="video">
+							{Video-500}
+						</div>
+						{/block:Video}
+						{block:Audio}
+						<div class="audio">
+							{block:AlbumArt}<img src="{AlbumArtURL}" alt="">{/block:AlbumArt}
+							{AudioPlayerBlack}
+						</div>
+						{/block:Audio}
+						{block:Photo}
+						<div class="photo">
+							{LinkOpenTag}<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>{LinkCloseTag}
+						</div>
+						{/block:Photo}
+						{block:Photoset}
+						<div class="photoset">
+							{block:Photos}
+							<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>
+							{/block:Photos}
+						</div>
+						{/block:Photoset}
+
+						{block:Panorama}
+						<div class="panorama">
+							{LinkOpenTag}<img src="{PhotoURL-Panorama}" alt="{PhotoAlt}" />{LinkCloseTag}
+						</div>
+						{/block:Panorama}
+
+						{block:Chat}
+						<div class="chat">
+							{block:Title}<h3>{Title}</h3>{/block:Title}
+							<ul class="conversation">
+								{block:Lines}
+								<li class="line {Alt}">
+									{block:Label}<span class="person">{Label}</span>{/block:Label}
+									<span class="person-said">{Line}</span>
+								</li>
+								{/block:Lines}
+							</ul>
+						</div>
+						{/block:Chat}
+						{block:Answer}
+						<div class="answer">
+							<img src="{AskerPortraitURL-40}">
+							{Asker}
+							{Question}
+							{Answer}
+						</div>
+						{/block:Answer}
+					</article>
+				</div>
+				{/block:Posts}
+			</div>
+		</section><!--close content-->
+
+		<!-- js files place at end of body for better performance -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="http://static.tumblr.com/askg8j2/GePmzf8ag/masonry.pkgd.min.js"></script>
+		<script src="http://imagesloaded.desandro.com/imagesloaded.pkgd.min.js"></script>
+
+		<!-- custom JS here -->
+
+		<script>
+			// set up masonry
+		var $container = $('.cell-container');
+		// initialize
+
+		$container.imagesLoaded( function() {
+			$container.masonry({
+				itemSelector: '.cell-wrapper'
+			});
+		});
+
+
+// navi width
+console.log("x width = " + $container.width());
+$(document).ready(resizeDiv);
+$(window).resize(resizeDiv);
+
+function resizeDiv() {
+	var $container = $('.cell-container');
+	var colNum = Math.floor($container.width()/301);
+	var $navi = $("#navi");
+	console.log("Number of Columns = "+ colNum);
+	newWidth = colNum*301 - 1;
+	$navi.css("width",newWidth);
+}
+
+
+		</script>
+
+	</body>
+</html>
+
